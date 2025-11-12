@@ -1,184 +1,69 @@
-/* === Grundlayout === */
-body {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f3f5f7;
-  color: #222;
+:root{
+--bg:#0b0c10;
+--panel:#141821;
+--text:#e9ecf1;
+--muted:#98a2b3;
+--accent:#3b82f6; /* brand color */
+--ring:rgba(59,130,246,.35);
+--radius:18px;
+--maxw:1100px;
 }
-
-header {
-  background: linear-gradient(135deg, #004aad, #0078ff);
-  padding: 15px 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Cantarell,Noto Sans,sans-serif;
+color:var(--text);
+background: radial-gradient(1200px 800px at 70% -10%, #1a1b24 0%, transparent 55%), var(--bg);
+-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+.muted{color:var(--muted)}
 
-header .zurück a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
 
-header .zurück a:hover {
-  text-decoration: underline;
-}
+/* Buttons */
+.btn{display:inline-block;padding:10px 14px;border-radius:12px;background:var(--accent);color:#fff;font-weight:600;border:0;cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--text)}
 
-section {
-  padding: 30px 15%;
-  max-width: 900px;
-  margin: auto;
-}
 
-h3 {
-  font-size: 1.8em;
-  color: #004aad;
-  text-align: center;
-  margin-bottom: 25px;
-  border-bottom: 3px solid #004aad;
-  display: inline-block;
-  padding-bottom: 8px;
-}
+/* Header / Nav */
+.site-header{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);background:rgba(20,24,33,.6);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+.brand img{height:40px;width:auto;border-radius:8px}
 
-h4 {
-  font-size: 1.4em;
-  color: #333;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
 
-/* === Video === */
-.info {
-  text-align: center;
-  margin-bottom: 40px;
-}
+/* Hero */
+.hero-box{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px;margin:18px 0;display:grid;gap:10px}
+.lead{font-size:clamp(18px,2.4vw,22px);color:var(--muted);margin:6px 0 0}
 
-.v1 {
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
 
-/* === Quiz-Bereich === */
-.formular {
-  background: white;
-  border-radius: 15px;
-  padding: 25px 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
+/* Sections / Cards */
+.section{padding:10px 0 24px}
+.card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;margin:14px 0}
+.card h2{margin:0 0 10px}
 
-.formular p {
-  font-weight: 500;
-  margin-bottom: 10px;
-}
 
-input[type="radio"] {
-  accent-color: #0078ff;
-  margin-right: 6px;
-}
+/* Form elements */
+label{font-weight:600;margin-top:10px;display:block}
+input{width:100%;padding:10px 12px;border-radius:12px;background:#0f1219;border:1px solid rgba(255,255,255,.12);color:var(--text);margin:6px 0 8px}
+input:focus{outline:none;box-shadow:0 0 0 4px var(--ring)}
+output{display:block;min-height:1.2em}
+.correct{color:#22c55e}
+.incorrect{color:#ef4444}
 
-label {
-  font-size: 1rem;
-}
 
-button {
-  background: #0078ff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-top: 20px;
-  transition: background 0.3s;
-}
+/* Actions & Footer */
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}
+.score{font-weight:800}
+.site-footer{border-top:1px solid rgba(255,255,255,.08);background:#0f1219}
+.site-footer .wrap{padding:14px 20px}
 
-button:hover {
-  background: #005fcc;
-}
 
-/* === Weiter-Link === */
-.weiter {
-  text-align: center;
-  margin: 40px 0;
-}
-
-.weiter a {
-  background: #004aad;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-  font-weight: 600;
-}
-
-.weiter a:hover {
-  background: #003580;
-}
-
-/* === Modal === */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 25px 30px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 450px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  text-align: center;
-}
-
-.modal-content h4 {
-  margin-bottom: 15px;
-  color: #004aad;
-}
-
-.close-modal {
-  background: #0078ff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 18px;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: 0.3s;
-}
-
-.close-modal:hover {
-  background: #005fcc;
-}
-
-/* === Responsive Design === */
-@media (max-width: 768px) {
-  section {
-    padding: 20px;
-  }
-
-  h3 {
-    font-size: 1.4em;
-  }
-
-  .formular {
-    padding: 20px;
-  }
-
-  .v1 {
-    width: 100%;
-    height: auto;
-  }
+/* Responsive */
+@media (max-width: 840px){
+.brand span{display:none}
 }

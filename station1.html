@@ -1,129 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stationen</title>
-    <link rel="stylesheet" href="station1.css" />
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toursights • Station 1 Quiz</title>
+  <link rel="stylesheet" href="station1.css" />
+  <link rel="shortcut icon" href="Icon-Shikane.png" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img src="Shikane-Logo.png" alt="Logo" />
+        <span>Toursights</span>
+      </a>
+    </div>
+  </header>
 
-    <link rel="shortcut icon" href="Icon-Shikane.png" />
-  </head>
-  <body>
-    <header>
-      <div class="zurück">
-        <a href="station.html">Zurück zum Anfang</a>
-      </div>
-    </header>
-    <section>
-      <h3>Station 𝟏 / Digital Studio Labor </h3>
-    
-      <div class="info">
-        <video  class="v1" width="450" height="340" controls>
-          <source src="VideoStation1_neu.mp4" type="video/mp4">
+  <main class="wrap">
+    <section class="hero-box">
+      <h1>Toursights – Station 1 • Digital Studio Labor</h1>
+    </section>
+
+    <section class="section">
+      <div class="card">
+
+        <div class="card">
+        <h2>Video</h2>
+        <video class="v1" width="100%" controls>
+          <source src="VideoStation1_neu.mp4" type="video/mp4" />
+          Dein Browser unterstützt das Video-Tag nicht.
         </video>
       </div>
 
-      <h4>Kapitel 2 : Quiz</h4>
-      <div class="formular">
-        <form id="quiz-form">
-          <div>
-            <p><b>1. Was ist eine Möglichkeit für artificial Intelligence?</b></p>
-            <input type="radio" id="q1-a1" name="Frage1" value="1" />
-            <label for="q1-a1"
-              >GeoSocial.</label
-            ><br />
-            <input type="radio" id="q1-a2" name="Frage1" value="0" />
-            <label for="q1-a2">Geopark.</label><br />
-            <input type="radio" id="q1-a3" name="Frag1" value="0" />
-            <label for="q1-a3">Geonew</label>
-          </div>
-          <div>
-            <p>
-              <b
-                >2.Von welcher Universität Digital Network of conspiracy durchgeführt ?  </b
-              >
-            </p>
-            <input type="radio" id="q2-a1" name="Frage2" value="0" />
-            <label for="q2-a1"
-              >Uni Wien</label
-            ><br />
-            <input type="radio" id="q2-a2" name="Frage2" value="1" />
-            <label for="q2-a2"
-              >Uni Austria</label
-            ><br />
-            <input type="radio" id="q2-a3" name="Frage2" value="0" />
-            <label for="q2-a3">Uni Salzburg</label>
-          </div>
-          <div>
-            <p><b>3. Was ist kein Signalwort?</b></p>
-            <input type="radio" id="q3-a1" name="Frage3" value="0" />
-            <label for="q3-a1"
-              >Experience
-           </label
-            ><br />
-            <input type="radio" id="q3-a2" name="Frage3" value="0" />
-            <label for="q3-a2"> Participate </label><br />
-            <input type="radio" id="q3-a3" name="Frage3" value="1" />
-            <label for="q3-a3">Digital</label>
-          </div>
-        
-          <button type="button" onclick="checkAnswers()">Überprüfen</button>
-        </form>
+      
+        <h2>Fragen</h2>
+
+        <label for="q1">1. Was ist eine Möglichkeit für artificial Intelligence?</label>
+        <input id="q1" type="text" placeholder="Antwort hier..." />
+        <output id="q1o"></output>
+
+        <label for="q2">2. Von welcher Universität wird „Digital Network of conspiracy“ durchgeführt?</label>
+        <input id="q2" type="text" placeholder="Antwort hier..." />
+        <output id="q2o"></output>
+
+        <label for="q3">3. Was ist <u>kein</u> Signalwort?</label>
+        <input id="q3" type="text" placeholder="Antwort hier..." />
+        <output id="q3o"></output>
       </div>
+
       
 
-      <div id="result"></div>
-    </section>
-
-    <script>
-      function checkAnswers() {
-      const correctAnswers = { Frage1: "1", Frage2: "1", Frage3: "1"};
-      let score = 0;
-      let feedback = "";
-    
-      // Check all answers
-      for (const [question, correct] of Object.entries(correctAnswers)) {
-        const selected = document.querySelector(
-          `input[name="${question}"]:checked`
-        );
-    
-        if (selected) {
-          if (selected.value === correct) {
-            score++;
-            feedback += `${question}: <span style="color: green">Richtig!</span><br>`;
-          } else {
-            feedback += `${question}: <span style="color: red;">Falsch!</span><br>`;
-          }
-        } else {
-          feedback += `${question}: <span style="color: orange;">Bitte beantworten Sie die Frage.</span><br>`;
-        }
-      }
-    
-      // Show feedback in the modal
-      const resultMessage = `Sie haben ${score} von 3 Fragen richtig beantwortet.<br><br>${feedback}`;
-      document.getElementById("modal-feedback").innerHTML = resultMessage;
-    
-      // Display the modal
-      const modal = document.getElementById("resultModal");
-      modal.style.display = "block";
-    }
-    
-    // Close modal function
-    function closeModal() {
-      const modal = document.getElementById("resultModal");
-      modal.style.display = "none";
-    }
-    </script>
-
-    <div class="weiter">
-      <a href="station2.html"> Weiter zu Station 2</a>
-    </div>
-    <div id="resultModal" class="modal">
-      <div class="modal-content">
-        <h4>Ergebnis:</h4>
-        <p id="modal-feedback"></p>
-        <button class="close-modal" onclick="closeModal()">Schließen</button>
+      <div class="actions">
+        <button id="checkBtn" class="btn">Auswerten</button>
+        <button id="resetBtn" class="btn btn-ghost" type="button">Zurücksetzen</button>
+        <div id="score" class="score"></div>
       </div>
+
+      <div class="actions">
+        <a class="btn btn-link" href="station2.html">Weiter zu Station 2</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="muted">© <span id="year"></span> Toursights • Station 1 Quiz</p>
+      <ul class="foot-nav">
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="stationen.html">Module</a></li>
+        <li><a href="links.html">Links</a></li>
+        <li><a href="map.html">Map</a></li>
+        <li><a href="fortschritt.html">Fortschritt</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
     </div>
-  </body>
+  </footer>
+
+  <script src="station1.js"></script>
+</body>
 </html>
