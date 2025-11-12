@@ -1,64 +1,77 @@
 <!DOCTYPE html>
-
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Finanz App</title>
-    <script src="index.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="Icon-Shikane.png">
-    <link rel="manifest" href="manifest.json">
-  </head>
-
-  <body>
-    <header>
-      <img src="Shikane-Logo.png" alt="Shikane-Logo">
-    </header>
-    <div class="startseitebox">
-      <section id="startseite">
-        <h1>𝐕𝐨𝐫𝐬𝐭𝐞𝐥𝐥𝐮𝐧𝐠</h1>
-        <h4>𝐖𝐢𝐥𝐥𝐤𝐨𝐦𝐦𝐞𝐧 auf 𝐮𝐧𝐬𝐞𝐫𝐞𝐫 Toursights-Webseite</h4>
-  
-        <p>𝚆𝚒𝚛 𝚜𝚒𝚗𝚍 𝚎𝚒𝚗𝚎 𝙶𝚛𝚞𝚙𝚙𝚎 𝚊𝚞𝚜 𝚍𝚎𝚛 𝙷𝚃𝙻 𝙿𝚊𝚞𝚕-𝙷𝚊𝚑𝚗 aus der Fachrichtung IT</p>
-        <p>𝚄𝚗𝚜𝚎𝚛𝚎 Webseite 𝚐𝚒𝚋𝚝 𝚍𝚎𝚗 𝙹𝚞𝚐𝚎𝚗𝚍𝚕𝚒𝚌𝚑𝚎𝚗 𝚎𝚒𝚗𝚎𝚗 𝙴𝚒𝚗𝚋𝚕𝚒𝚌𝚔 𝚒𝚗 𝚍𝚒𝚎 𝚆𝚎𝚕𝚝 𝚍𝚎𝚛 Zunkunft.</p>
-      </section>
-    </div>
-  
-    <div class="container">
-      <h2>𝐀𝐧𝐝𝐢</h2>
-      <p class="t">
-         Work: Organisation,Code </p>
-      <h2>𝐌𝐚𝐫𝐜𝐞𝐥</h2>
-      <p class="tx">Work: 𝙳𝚎𝚜𝚒𝚐𝚗,Code</p>
-      </div>
+<link rel="stylesheet" href="style.css">
+<ul>
+<li><a class="active" href="index.html">Startseite</a></li>
+<li><a href="stationen.html">Module</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a href="map.html">Map</a></li>
+<li><a href="fortschritt.html">Fortschritt</a></li>
+<li><a href="profil.html">Profil</a></li>
+</ul>
+</nav>
+</div>
+</header>
 
 
-    <div class="socialmedia">
-      <h5>𝐂𝐨𝐧𝐭𝐚𝐜𝐭</h5>
-      <div class="social-icons">
-        <a href="https://discord.com/users/981236856182157362" target="_blank">
-          <img src="leftspace_1.png" alt="Discord-Profile / Andi" />
-        </a>
-        <a href="https://discord.com/users/782913009503961088" target="_blank">
-          <img src="money.gif" alt="Discord-Profile / Marcel" />
-        </a>
-      </div>
-    </div>
-    
- 
-    <footer>
-      <nav>
-        <ul>
-          <li><a href="index.html">Startseite</a></li>
-          <li><a href="stationen.html">Module</a></li>
-          <li><a href="links.html">Links</a></li>
-          <li><a href="map.html">Map</a></li>
-          <li><a href="fortschritt.html">Fortschritt</a></li>
-          <li><a href="profil.html">Profil</a></li>
-        </ul>
-      </nav>
-    
-    </footer>
-  </body>
+<main>
+<!-- Hero / Vorstellung -->
+<section class="hero">
+<div class="wrap hero-box">
+<h1>Vorstellung</h1>
+<p class="lead">Willkommen auf unserer Toursights‑Webseite.</p>
+<p>
+Wir sind eine Gruppe aus der <strong>HTL Paul‑Hahn</strong> (Fachrichtung IT).
+Unsere Webseite gibt Jugendlichen einen Einblick in die Welt der Zukunft.
+</p>
+<div class="cta-row">
+<a class="btn" href="stationen.html">Module ansehen</a>
+<a class="btn btn-ghost" href="map.html">Zur Karte</a>
+</div>
+</div>
+</section>
+
+
+<!-- Team -->
+<section class="section">
+<div class="wrap grid-2">
+<article class="card">
+<h2>Andi</h2>
+<p class="muted">Work: Organisation, Code</p>
+</article>
+<article class="card">
+<h2>Marcel</h2>
+<p class="muted">Work: Design, Code</p>
+</article>
+</div>
+</section>
+
+
+<!-- Footer -->
+<footer class="site-footer">
+<div class="wrap">
+<nav aria-label="Footer">
+<ul>
+<li><a href="index.html">Startseite</a></li>
+<li><a href="stationen.html">Module</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a href="map.html">Map</a></li>
+<li><a href="fortschritt.html">Fortschritt</a></li>
+<li><a href="profil.html">Profil</a></li>
+</ul>
+</nav>
+<p class="muted">© <span id="year"></span> Toursights · HTL Paul‑Hahn</p>
+</div>
+<script>
+// Mobile nav toggle + year stamp
+const btn = document.querySelector('.menu-btn');
+const nav = document.getElementById('mainnav');
+btn?.addEventListener('click', () => {
+const open = btn.getAttribute('aria-expanded') === 'true';
+btn.setAttribute('aria-expanded', String(!open));
+nav.classList.toggle('open');
+});
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</footer>
+</body>
 </html>
