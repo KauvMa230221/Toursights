@@ -11,7 +11,6 @@ const containsAll = (val, required) => {
   return required.every(req => n.includes(norm(req)));
 };
 
-// ==== Auswertung ====
 function checkAll() {
   const results = [];
 
@@ -33,12 +32,20 @@ function checkAll() {
     equalsOneOf(q3.value, ['Digital'])
   ));
 
-  // Punkte anzeigen
+  // Punkte berechnen
   const score = results.filter(Boolean).length;
   const total = results.length;
-  document.getElementById('score').textContent = `Punkte: ${score} / ${total}`;
+
+  document.getElementById('score').textContent =
+    `Punkte: ${score} / ${total}`;
+
+  // === Punkte für Fortschritt speichern ===
+  localStorage.setItem("station1_score", score);
+  localStorage.setItem("station1_done", "true");
+
   document.getElementById('year').textContent = new Date().getFullYear();
 }
+
 
 // ==== Ausgabe-Funktion ====
 function setResult(outId, ok) {

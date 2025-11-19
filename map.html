@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Toursights • Map</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header>
+<ul>
+<li><a href="index.html">Startseite</a></li>
+<li><a href="stationen.html">Module</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a class="active" href="map.html">Map</a></li>
+<li><a href="fortschritt.html">Fortschritt</a></li>
+<li><a href="profil.html">Profil</a></li>
+</ul>
+</header>
+
+<main class="wrap">
+<h1>Reise – GPS Tracking</h1>
+<p>Hier wird deine Strecke live in Kilometern gezählt.</p>
+
+<div class="card">
+    <p>Zurückgelegte Kilometer: <strong id="km">0.00</strong> km</p>
+
+    <button id="startButton" class="btn">Tracking starten</button>
+    <button id="stopButton" class="btn btn-ghost" disabled>Tracking stoppen</button>
+    <button id="finishTrip" class="btn" disabled>Reise speichern und stoppen</button>
+
+    <p id="infoText" class="muted"></p>
+</div>
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<p class="muted">© <span id="year"></span> Toursights</p>
+</div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// =======================
+// GPS Tracking Variablen
+// =======================
+let watchId = null;
+let lastPos = null;
+let km = 0;
+
+// Falls eine Reise bereits läuft -> letzte km laden
+if (localStorage.getItem("reiseKM")) {
+    km = parseFloat(localStorage.getItem("reiseKM")) || 0;
+    document.getElementById("km").textContent = km.toFixed(2);
+}
+
+// =======================
+// Abstand berechnen (Haversine)
+// =======================
+function calcDistance(a, b) {
+    const R = 6371; // km
+    const dLat = (b.lat - a.lat) * Math.PI / 180;
+    const dLon = (b.lon - a.lon) * Math.PI / 180;
+    const lat1 = a.lat * Math.PI/180;
+    const lat2 = b.lat * Math.PI/180;
+
+    const x = Math.sin(dLat/2)**2 + Math.sin(dLon/2)**2 * Math.cos(lat1)*Math.cos(lat2);
+    const c = 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1-x));
+
+    return R * c;
+}
+
+// =======================
+// GPS: Tracking starten
+// =======================
+document.getElementById("startButton").onclick = () => {
+    if (!navigator.geolocation) {
+        alert("GPS wird nicht unterstützt!");
+        return;
+    }
+
+    document.getElementById("infoText").textContent = "GPS Tracking läuft...";
+    document.getElementById("startButton").disabled = true;
+    document.getElementById("stopButton").disabled = false;
+    document.getElementById("finishTrip").disabled = false;
+
+    watchId = navigator.geolocation.watchPosition(
+        pos => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+
+            if (lastPos) {
+                const dist = calcDistance(lastPos, {lat, lon});
+                km += dist;
+                localStorage.setItem("reiseKM", km.toFixed(2));
+                document.getElementById("km").textContent = km.toFixed(2);
+            }
+
+            lastPos = {lat, lon};
+        },
+        err => {
+            document.getElementById("infoText").textContent = "GPS Fehler: " + err.message;
+        },
+        { enableHighAccuracy: true }
+    );
+};
+
+// =======================
+// GPS: Tracking stoppen
+// =======================
+document.getElementById("stopButton").onclick = () => {
+    if (watchId !== null) navigator.geolocation.clearWatch(watchId);
+
+    document.getElementById("infoText").textContent = "Tracking angehalten.";
+    document.getElementById("startButton").disabled = false;
+    document.getElementById("stopButton").disabled = true;
+};
+
+// =======================
+// Reise komplett speichern + stoppen
+// =======================
+document.getElementById("finishTrip").onclick = () => {
+    const endKM = km.toFixed(2);
+
+    alert("Reise gestoppt!\nZurückgelegte Strecke: " + endKM + " km");
+
+    // Speichert km in allgemeinem Fortschritt
+    const gesamt = parseFloat(localStorage.getItem("gesamtKM") || "0");
+    localStorage.setItem("gesamtKM", (gesamt + km).toFixed(2));
+
+    // Reise zurücksetzen
+    localStorage.removeItem("reiseKM");
+    localStorage.setItem("reiseAktiv", "false");
+
+    window.location.href = "index.html";
+};
+</script>
+
+</body>
+</html>
