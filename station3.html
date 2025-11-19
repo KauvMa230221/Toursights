@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toursights • Station 3 Quiz</title>
+  <link rel="stylesheet" href="station3.css" />
+</head>
+<body>
+
+  <!-- Header mit Navigation -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img src="Shikane-Logo.png" alt="Logo" />
+        <span>Toursights</span>
+      </a>
+
+      <nav class="mainnav">
+        <ul>
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="stationen.html">Module</a></li>
+          <li><a class="active" href="station3.html">Station 3</a></li>
+          <li><a href="links.html">Links</a></li>
+          <li><a href="map.html">Map</a></li>
+          <li><a href="fortschritt.html">Fortschritt</a></li>
+          <li><a href="profil.html">Profil</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <!-- Hero-Bereich -->
+      <section class="hero">
+        <div class="hero-box">
+          <h1>Toursights – Station 3 Quiz & Fakten</h1>
+          <p class="lead">Teste dein Wissen über die Arbeiterkammer!</p>
+        </div>
+      </section>
+
+      <!-- Quiz-Bereich (wird von JS gefüllt) -->
+      <section class="section">
+        <div id="quizRoot" class="card"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="muted">© <span id="year"></span> Toursights • Station 3 Quiz</p>
+    </div>
+  </footer>
+
+  <!-- Nur EIN Script: das neue sequentielle Quiz -->
+  <script src="station3.js"></script>
+</body>
+</html>
