@@ -121,8 +121,15 @@ async function loadMe() {
     const uData = await uRes.json();
     document.getElementById('adminUsers').textContent = JSON.stringify(uData.users, null, 2);
   }
-}
 
+  /**
+   * if(data.user.role !== 'admin') {
+    document.getElementById('adminBox').style.display = 'none';
+  }
+  \*/
+
+  
+}
 document.getElementById('loginBtn').addEventListener('click', async () => {
   const username = loginUser.value;
   const password = loginPass.value;
