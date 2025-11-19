@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toursights • Station 1 Quiz</title>
+  <link rel="stylesheet" href="station1.css" />
+  <link rel="shortcut icon" href="Icon-Shikane.png" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img src="Shikane-Logo.png" alt="Logo" />
+        <span>Toursights</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero-box">
+      <h1>Toursights – Station 1 • Digital Studio Labor</h1>
+    </section>
+
+    <section class="section">
+      <div class="card">
+
+        <div class="card">
+        <h2>Video</h2>
+        <video class="v1" width="100%" controls>
+          <source src="VideoStation1_neu.mp4" type="video/mp4" />
+          Dein Browser unterstützt das Video-Tag nicht.
+        </video>
+      </div>
+
+      
+        <h2>Fragen</h2>
+
+        <label for="q1">1. Was ist eine Möglichkeit für artificial Intelligence?</label>
+        <input id="q1" type="text" placeholder="Antwort hier..." />
+        <output id="q1o"></output>
+
+        <label for="q2">2. Von welcher Universität wird „Digital Network of conspiracy“ durchgeführt?</label>
+        <input id="q2" type="text" placeholder="Antwort hier..." />
+        <output id="q2o"></output>
+
+        <label for="q3">3. Was ist <u>kein</u> Signalwort?</label>
+        <input id="q3" type="text" placeholder="Antwort hier..." />
+        <output id="q3o"></output>
+      </div>
+
+      
+
+      <div class="actions">
+        <button id="checkBtn" class="btn">Auswerten</button>
+        <button id="resetBtn" class="btn btn-ghost" type="button">Zurücksetzen</button>
+        <div id="score" class="score"></div>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-link" href="station2.html">Weiter zu Station 2</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="muted">© <span id="year"></span> Toursights • Station 1 Quiz</p>
+      <ul class="foot-nav">
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="stationen.html">Module</a></li>
+        <li><a href="links.html">Links</a></li>
+        <li><a href="map.html">Map</a></li>
+        <li><a href="fortschritt.html">Fortschritt</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="station1.js"></script>
+</body>
+</html>

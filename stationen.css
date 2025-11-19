@@ -1,0 +1,158 @@
+/* ===== stationen.css ===== */
+
+/* Grundlegendes Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Farben und Schriftarten */
+:root {
+  --bg-color: #f5f7fa;
+  --accent: #2b6cb0;
+  --accent-light: #3182ce;
+  --text-dark: #1a202c;
+  --text-light: #4a5568;
+  --card-bg: #ffffff;
+}
+
+/* Grundlayout */
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: white;
+  padding: 1.5rem 0;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Erklärungskasten */
+.clfeld {
+  background-color: var(--card-bg);
+  border-left: 5px solid var(--accent);
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.clfeld h2 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.clfeld h3 {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+/* Abschnittstitel */
+p {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--text-dark);
+}
+
+/* Linkbereich */
+.lnk {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem auto 2rem auto;
+}
+
+.lik {
+  display: inline-block;
+  background-color: var(--accent);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.lik:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  background-color: var(--text-dark);
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+footer nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+footer nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+footer nav a:hover {
+  color: var(--accent-light);
+}
+
+/* Copyright */
+.noth {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .clfeld {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .lik {
+    width: 80%;
+    text-align: center;
+  }
+
+  footer nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
