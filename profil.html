@@ -128,7 +128,7 @@ async function loadMe() {
   }
   \*/
 
-  
+
 }
 document.getElementById('loginBtn').addEventListener('click', async () => {
   const username = loginUser.value;
@@ -141,7 +141,7 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
     msg.textContent = 'Login erfolgreich – du kannst jetzt die Seiten nutzen.';
     await loadMe();
     // Optional: zurück zur Startseite
-    // window.location.href = 'index.html';
+    window.location.href = 'index.html';
   }
 });
 
