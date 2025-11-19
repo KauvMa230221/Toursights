@@ -24,7 +24,7 @@ const QUESTIONS = [
   {
     id: 'q1',
     label: 'Wo befindet sich die mechanische Klangfabrik?',
-    placeholders: ['z. B. Haslach'],
+    placeholders: [''],
     check: (vals) => equalsOneOf(vals[0], ['Haslach']),
     correctText: 'Haslach',
     hints: ['Ortsname im Mühlviertel.', 'Beginnt mit H, 7 Buchstaben.']
@@ -32,7 +32,7 @@ const QUESTIONS = [
   {
     id: 'q2',
     label: 'Von wo kamen die Hoflieferanten der mechanischen Klangfabrik?',
-    placeholders: ['z. B. Aus dem Englischen Königshaus'],
+    placeholders: [''],
     check: (vals) =>
       equalsOneOf(vals[0], [
         'Aus dem Englischen Königshaus',
@@ -44,7 +44,7 @@ const QUESTIONS = [
   {
     id: 'q3',
     label: 'Welche KI-generierten Visualisierungen gibt es hier?',
-    placeholders: ['z. B. Musik'],
+    placeholders: [''],
     check: (vals) =>
       equalsOneOf(vals[0], ['Musik', 'Musikvisualisierungen', 'KI Musik']),
     correctText: 'Musik (KI-Musikvisualisierungen)',
@@ -53,7 +53,7 @@ const QUESTIONS = [
   {
     id: 'q4',
     label: 'Zu welcher Ausstellung gehört der Klavierstimmer?',
-    placeholders: ['z. B. AI x Music'],
+    placeholders: [''],
     check: (vals) =>
       equalsOneOf(vals[0], ['AI x Music', 'AI×Music', 'AI x music']),
     correctText: 'AI x Music',
@@ -62,7 +62,7 @@ const QUESTIONS = [
   {
     id: 'q5',
     label: 'Wie heißt das Klavier (10 Melodien, 1900, Frankreich)?',
-    placeholders: ['z. B. Walzenklavier'],
+    placeholders: [''],
     check: (vals) => equalsOneOf(vals[0], ['Walzenklavier']),
     correctText: 'Walzenklavier',
     hints: ['Mechanik, spielt 10 Melodien.', 'Endet auf …klavier.']
@@ -70,7 +70,7 @@ const QUESTIONS = [
   {
     id: 'q6',
     label: 'Connected Earth: Wie heißt die „Kugel“ (Titel + Künstler*in)?',
-    placeholders: ['Titel z. B. Ex.A.R.U.', 'Künstler*in z. B. Dorotea Dolinšek'],
+    placeholders: [''],
     check: (vals) =>
       equalsOneOf(vals[0], [
         'Ex.A.R.U.',
@@ -90,7 +90,7 @@ const QUESTIONS = [
   {
     id: 'q7',
     label: 'Wie heißt das Projekt der Geosocial-AI Forschungsgruppe?',
-    placeholders: ['z. B. DEGENET'],
+    placeholders: [''],
     check: (vals) => equalsOneOf(vals[0], ['DEGENET']),
     correctText:
       'DEGENET (Stationsname: Conspiracies in Virtual and Geographic Space)',
@@ -100,7 +100,7 @@ const QUESTIONS = [
     id: 'q8',
     label:
       'I Need More Space: Interaktive Installation zu Farbabstufungen (Korallenriffe)?',
-    placeholders: ['z. B. FadingColours'],
+    placeholders: [''],
     check: (vals) =>
       equalsOneOf(vals[0], [
         'FadingColours',
@@ -116,7 +116,7 @@ const QUESTIONS = [
   {
     id: 'q9',
     label: 'ESERO Austria: Nenne drei Schlagwörter (Space + Education + …).',
-    placeholders: ['z. B. Space, Education, Science'],
+    placeholders: [''],
     check: (vals) => {
       const v = vals[0];
       const must = containsAll(v, ['space', 'education']);

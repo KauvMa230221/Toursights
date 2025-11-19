@@ -1,114 +1,61 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Toursights • Station 2 Quiz</title>
-<link rel="stylesheet" href="station2.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toursights • Station 2 Quiz</title>
+  <link rel="stylesheet" href="station2.css" />
 </head>
 <body>
-<header class="site-header">
-<div class="wrap nav">
-<a class="brand" href="index.html"><img src="Shikane-Logo.png" alt="Logo" /><span>Toursights</span></a>
-</div>
-</header>
 
+  <!-- Header mit Navigation -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img src="Shikane-Logo.png" alt="Logo" />
+        <span>Toursights</span>
+      </a>
 
-<main class="wrap">
-<section class="hero-box">
-<h1>Toursights – Station 2 Quiz & Fakten</h1>
-<p class="lead">Teste dein Wissen über die Ausstellungen!</p>
-</section>
+      <nav class="mainnav">
+        <ul>
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="stationen.html">Module</a></li>
+          <li><a class="active" href="station2.html">Station 2</a></li>
+          <li><a href="links.html">Links</a></li>
+          <li><a href="map.html">Map</a></li>
+          <li><a href="fortschritt.html">Fortschritt</a></li>
+          <li><a href="profil.html">Profil</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <div class="wrap">
 
-<script src="station2-seq.js"></script>
+      <!-- Hero-Bereich -->
+      <section class="hero">
+        <div class="hero-box">
+          <h1>Toursights – Station 2 Quiz & Fakten</h1>
+          <p class="lead">Teste dein Wissen über die Ausstellungen!</p>
+        </div>
+      </section>
 
-<div class="card">
-<h2>Zweiter Stock</h2>
-<label>Wo befindet sich die mechanische Klangfabrik?</label>
-<input id="q1" type="text" placeholder="Antwort hier...">
-<output id="q1o"></output>
+      <!-- Quiz-Bereich (wird von JS gefüllt) -->
+      <section class="section">
+        <div id="quizRoot" class="card"></div>
+      </section>
 
+    </div>
+  </main>
 
-<label>Von wo kamen die Hoflieferanten?</label>
-<input id="q2" type="text" placeholder="Antwort hier...">
-<output id="q2o"></output>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="muted">© <span id="year"></span> Toursights • Station 2 Quiz</p>
+    </div>
+  </footer>
 
-
-<label>Welche KI-generierten Visualisierungen gibt es?</label>
-<input id="q3" type="text" placeholder="Antwort hier...">
-<output id="q3o"></output>
-</div>
-
-
-<div class="card">
-<h2>Klavierzimmer</h2>
-<label>Zu welcher Ausstellung gehört der Klavierstimmer?</label>
-<input id="q4" type="text" placeholder="Antwort hier...">
-<output id="q4o"></output>
-
-
-<label>Wie heißt das Klavier aus 1900?</label>
-<input id="q5" type="text" placeholder="Antwort hier...">
-<output id="q5o"></output>
-</div>
-
-
-<div class="card">
-<h2>Connected Earth</h2>
-<label>Wie heißt die Kugel mit den Pflanzen (Titel + Künstler*in)?</label>
-<input id="q6a" type="text" placeholder="Titel">
-<input id="q6b" type="text" placeholder="Künstler*in">
-<output id="q6o"></output>
-
-
-<label>Wie heißt das Projekt der Forschungsgruppe Geosocial AI?</label>
-<input id="q7" type="text" placeholder="Antwort hier...">
-<output id="q7o"></output>
-</div>
-
-
-<div class="card">
-<h2>I Need More Space</h2>
-<label>Wie heißt die Installation mit Farbverläufen?</label>
-<input id="q8" type="text" placeholder="Antwort hier...">
-<output id="q8o"></output>
-</div>
-
-
-<div class="card">
-<h2>ESERO Austria</h2>
-<label>Nenne drei Schlagwörter</label>
-<input id="q9" type="text" placeholder="Antwort hier...">
-<output id="q9o"></output>
-</div>
-
-
-<div class="actions">
-<button id="checkBtn" class="btn">Auswerten</button>
-<button id="resetBtn" class="btn btn-ghost" type="button">Zurücksetzen</button>
-<div id="score" class="score"></div>
-</div>
-</section>
-</main>
-
-
-<footer class="site-footer">
-<div class="wrap">
-<p class="muted">© <span id="year"></span> Toursights • Station 2 Quiz</p>
-</div>
-</footer>
-
-
-<script src="station2.js"></script>
-
-<ul>
-      <li><a href="index.html">Startseite</a></li>
-      <li><a href="stationen.html">Module</a></li>
-      <li><a href="links.html">Links</a></li>
-      <li><a href="map.html">Map</a></li>
-      <li><a href="fortschritt.html">Fortschritt</a></li>
-      <li><a href="profil.html">Profil</a></li>
-</ul>
+  <!-- Nur EIN Script: das neue sequentielle Quiz -->
+  <script src="station2.js"></script>
 </body>
 </html>

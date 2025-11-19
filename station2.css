@@ -67,3 +67,23 @@ output{display:block;min-height:1.2em}
 @media (max-width: 840px){
 .brand span{display:none}
 }
+
+
+.result-row {
+  margin-bottom: 4px;
+}
+
+.correct {
+  color: #22c55e; /* grün */
+  font-weight: 600;
+}
+
+.incorrect {
+  color: #f97373; /* leichtes rot/orange, kannst du ändern */
+  font-weight: 600;
+}
+
+.solution {
+  color: #22c55e;      /* grün für die Lösung */
+  font-style: italic;  /* optional */
+}
