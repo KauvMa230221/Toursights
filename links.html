@@ -8,8 +8,10 @@
 
 <body class="page-main">
   <div class="container">
-    <h1>Nützliche Links</h1>
+  <h1>Nützliche Links</h1>
 
+  <div class="links-layout">
+    <!-- linke Spalte: externe Links (Buttons) -->
     <div class="buttons">
       <button class="reward-btn" data-url="https://www.oebb.at">
         ÖBB Webseite
@@ -23,21 +25,28 @@
         Ars Electronica Center
       </button>
     </div>
-  </div>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p class="muted">© <span id="year"></span> Toursights</p>
-      <ul class="foot-nav">
+    <!-- rechte Spalte: Seiten-Navigation, untereinander -->
+    <nav class="side-nav">
+      <h2 class="side-title">Seiten</h2>
+      <ul>
         <li><a href="index.html">Startseite</a></li>
         <li><a href="stationen.html">Module</a></li>
-        <li><a href="links.html">Links</a></li>
+        <li><a href="links.html" class="active">Links</a></li>
         <li><a href="map.html">Map</a></li>
         <li><a href="fortschritt.html">Fortschritt</a></li>
         <li><a href="profil.html">Profil</a></li>
       </ul>
-    </div>
-  </footer>
+    </nav>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="muted">© <span id="year"></span> Toursights</p>
+  </div>
+</footer>
+
 
   <script src="links.js"></script>
 </body>
