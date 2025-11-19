@@ -1,42 +1,76 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fortschritt</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>Toursights • Fortschritt</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="page-progress">
-  <div class="container">
-    <h1>Dein Fortschritt</h1>
 
-    <p class="points-info">
-      Aktuelle Punkte: <span id="currentPoints">0</span>
-    </p>
+<body>
 
-    <p>
-      Diese Punkte werden im Browser gespeichert (localStorage).<br />
-      Wenn du den Speicher im Browser löscht oder einen anderen Browser benutzt,
-      sind die Punkte weg / anders.
-    </p>
+<header>
+<ul>
+<li><a href="index.html">Startseite</a></li>
+<li><a href="stationen.html">Module</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a href="map.html">Map</a></li>
+<li><a class="active" href="fortschritt.html">Fortschritt</a></li>
+<li><a href="profil.html">Profil</a></li>
+</ul>
+</header>
 
-    <a href="links.html" class="progress-link">
-      ⬅ Zurück zur Punkte-Seite
-    </a>
-  </div>
-  <footer class="site-footer">
-    <div class="wrap">
-      <p class="muted">© <span id="year"></span> Toursights • Station 1 Quiz</p>
-      <ul class="foot-nav">
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="stationen.html">Module</a></li>
-        <li><a href="links.html">Links</a></li>
-        <li><a href="map.html">Map</a></li>
-        <li><a href="fortschritt.html">Fortschritt</a></li>
-        <li><a href="profil.html">Profil</a></li>
-      </ul>
-    </div>
-  </footer>
+<main class="wrap">
+<h1>Dein Fortschritt</h1>
 
-  <script src="fortschritt.js"></script>
+<div class="card">
+  <h2>Module / Quiz-Stationen</h2>
+
+  <p>Station 1 Punkte:
+    <strong id="s1">0</strong> / 3
+  </p>
+
+  <p>Station 2 Punkte:
+    <strong id="s2">0</strong> / 3
+  </p>
+
+  <p>Station 3 Punkte:
+    <strong id="s3">0</strong> / 3
+  </p>
+
+  <hr>
+
+  <h2>Reise Statistik</h2>
+
+  <p>Gesamt-Kilometer:
+    <strong id="gesamtKm">0.00</strong> km
+  </p>
+</div>
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<p class="muted">© <span id="year"></span> Toursights</p>
+</div>
+</footer>
+
+<script>
+// Jahr im Footer
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Station-Punkte laden
+document.getElementById("s1").textContent =
+  localStorage.getItem("station1_score") || "0";
+
+document.getElementById("s2").textContent =
+  localStorage.getItem("station2_score") || "0";
+
+document.getElementById("s3").textContent =
+  localStorage.getItem("station3_score") || "0";
+
+// Kilometer laden
+document.getElementById("gesamtKm").textContent =
+  localStorage.getItem("gesamtKM") || "0.00";
+</script>
+
 </body>
 </html>
