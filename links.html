@@ -1,53 +1,86 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <title>Links</title>
-  <link rel="stylesheet" href="links.css" />
+  <meta charset="UTF-8">
+  <title>TourSights – Links</title>
+  <link rel="stylesheet" href="links.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="page-main">
-  <div class="container">
-  <h1>Nützliche Links</h1>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="wrap">
+      <div class="nav">
 
-  <div class="links-layout">
-    <!-- linke Spalte: externe Links (Buttons) -->
-    <div class="buttons">
-      <button class="reward-btn" data-url="https://www.oebb.at">
-        ÖBB Webseite
-      </button>
+        <!-- Brand -->
+        <a href="index.html" class="brand">
+          <span>TourSights</span>
+        </a>
 
-      <button class="reward-btn" data-url="https://innovation.linz.at/de/aktuelle-projekte/digital-city-studio/">
-        Digital City Studio
-      </button>
+        <!-- Mobile Menu Button -->
+        <button class="menu-btn" aria-label="Menü öffnen" aria-expanded="false">
+          ☰
+        </button>
 
-      <button class="reward-btn" data-url="https://ars.electronica.art/news/de/">
-        Ars Electronica Center
-      </button>
+        <!-- Main Navigation -->
+        <nav class="mainnav" id="mainnav">
+          <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="stationen.html">Module</a></li>
+            <li><a class="active" href="links.html">Links</a></li>
+            <li><a href="map.html">Map</a></li>
+            <li><a href="fortschritt.html">Fortschritt</a></li>
+            <li><a href="profil.html">Profil</a></li>
+          </ul>
+        </nav>
+
+      </div>
     </div>
+  </header>
 
-    <!-- rechte Spalte: Seiten-Navigation, untereinander -->
-    <nav class="side-nav">
-      <h2 class="side-title">Seiten</h2>
-      <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="stationen.html">Module</a></li>
-        <li><a href="links.html" class="active">Links</a></li>
-        <li><a href="map.html">Map</a></li>
-        <li><a href="fortschritt.html">Fortschritt</a></li>
-        <li><a href="profil.html">Profil</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="hero hero-small">
+      <div class="wrap">
+        <h1>Nützliche Links</h1>
+      </div>
+    </section>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <p class="muted">© <span id="year"></span> Toursights</p>
-  </div>
-</footer>
+    <section class="content">
+      <div class="wrap links-layout">
 
+        <!-- Link-Buttons -->
+        <div class="center-buttons">
+          <button class="reward-btn" data-url="https://www.oebb.at">
+            ÖBB Webseite
+          </button>
 
+          <button class="reward-btn" data-url="https://innovation.linz.at/de/aktuelle-projekte/digital-city-studio/">
+            Digital City Studio
+          </button>
+
+          <button class="reward-btn" data-url="https://ars.electronica.art/news/de/">
+            Ars Electronica Center
+          </button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </nav>
+      <p class="muted">© <span id="year"></span> TourSights</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script src="links.js"></script>
-</body>
-</html>
