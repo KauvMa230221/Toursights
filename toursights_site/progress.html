@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>TourSights – Dein Fortschritt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="progress">
+  <header class="ts-header">
+    <div class="ts-logo">
+      <span class="ts-logo-icon">📍</span>
+      <span class="ts-logo-text">TourSights</span>
+    </div>
+    <nav class="ts-nav">
+      <a href="index.html" data-page-link="home">Startseite</a>
+      <a href="modules.html" data-page-link="modules">Module</a>
+      <a href="links.html" data-page-link="links">Links</a>
+      <a href="map.html" data-page-link="map">Map</a>
+      <a href="progress.html" data-page-link="progress" class="active">Fortschritt</a>
+      <a href="profile.html" data-page-link="profile">Profil</a>
+    </nav>
+  </header>
+
+  <main class="ts-main">
+    <section class="ts-section">
+      <h1>Dein Fortschritt</h1>
+    </section>
+
+    <section class="ts-card ts-card-wide ts-animate-up" id="progress-card">
+      <h2>Module / Quiz-Stationen</h2>
+      <p>Station 1 Punkte: <span id="station1-points">0</span> / 3</p>
+      <p>Station 2 Punkte: <span id="station2-points">0</span> / 9</p>
+      <p>Station 3 Punkte: <span>0</span> / 3 (Platzhalter)</p>
+
+      <hr />
+
+      <h2>Reise Statistik</h2>
+      <p>Gesamt-Kilometer: <span id="total-kilometers">0.00</span> km</p>
+    </section>
+  </main>
+
+  <footer class="ts-footer">
+    <p>© 2025 TourSights</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

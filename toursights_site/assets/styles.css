@@ -1,0 +1,606 @@
+/* =======================================================
+   RESET & VARIABLEN
+   ======================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Hintergrund */
+  --bg-main-top: #060714;
+  --bg-main-bottom: #0b1020;
+
+  /* Cards */
+  --panel-bg: #151623;
+  --panel-bg-soft: #1b1c2b;
+  --border-soft: rgba(248, 250, 252, 0.06);
+
+  /* Blossom-Farben */
+  --accent-pink: #f9fafb;
+  --accent-pink-soft: #f9fafb;
+
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+
+  --radius-lg: 20px;
+  --transition: 0.25s ease;
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* =======================================================
+   SEITE
+   ======================================================= */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: var(--font);
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(248, 113, 165, 0.18), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(244, 114, 182, 0.16), transparent 55%),
+    linear-gradient(var(--bg-main-top), var(--bg-main-bottom));
+}
+
+/* =======================================================
+   HEADER / NAVBAR
+   ======================================================= */
+
+.ts-header {
+  max-width: 1180px;
+  margin: 20px auto 0;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ts-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ts-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #757474, #836a70);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 0 16px rgba(248, 248, 248, 0.6);
+}
+
+.ts-logo-text {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.ts-nav {
+  display: flex;
+  gap: 18px;
+  font-size: 0.9rem;
+}
+
+.ts-nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 999px;
+  transition: var(--transition);
+}
+
+.ts-nav a:hover {
+  color: var(--text-main);
+  background: rgba(15, 23, 42, 0.75);
+}
+
+.ts-nav a.active {
+  background: rgba(15, 23, 42, 0.95);
+  color: #f9fafb;
+  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.7);
+}
+
+.ts-nav a[data-page-link="profile"] {
+  border-radius: 999px;
+  border: 1px solid rgba(248, 113, 165, 0.5);
+}
+
+/* =======================================================
+   LAYOUT
+   ======================================================= */
+
+.ts-main,
+.ts-main-centered {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 24px 40px;
+}
+
+.ts-main-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =======================================================
+   HERO / STARTSEITE
+   ======================================================= */
+
+.ts-hero {
+  position: relative;
+  background: var(--panel-bg);
+  border-radius: var(--radius-lg);
+  padding: 48px 52px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+}
+
+/* Blüten-Deko */
+.ts-hero::before,
+.ts-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #fecdd3, #fb7185);
+  opacity: 0.2;
+  filter: blur(4px);
+}
+
+.ts-hero::before {
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  left: -40px;
+}
+
+.ts-hero::after {
+  width: 260px;
+  height: 260px;
+  bottom: -80px;
+  right: -20px;
+}
+
+.ts-hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 40px;
+  align-items: center;
+  z-index: 1;
+}
+
+.ts-hero-title {
+  font-size: clamp(2.4rem, 3vw + 1.2rem, 3.4rem);
+  margin: 0 0 18px;
+  font-weight: 600;
+}
+
+.ts-hero-title .ts-gradient-text {
+  display: block;
+  background: linear-gradient(120deg, #833c3c, #ffffff, #bd8585);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.ts-hero-subtitle {
+  margin: 0 0 28px;
+  max-width: 460px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Kreis rechts */
+.ts-hero-inner::after {
+  content: "";
+  justify-self: center;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #fdf2f8, #e5e7eb, #6b7280);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.6);
+}
+
+.ts-hero-inner::before {
+  content: "";
+  position: absolute;
+  right: 80px;
+  top: 18px;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  border: 2px solid rgba(248, 250, 252, 0.06);
+}
+
+/* =======================================================
+   BUTTONS (GLOBAL)
+   ======================================================= */
+
+.ts-btn {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Primär */
+.ts-btn-primary {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-pink-soft));
+  color: #111827;
+  box-shadow: 0 16px 32px rgba(214, 214, 214, 0.55);
+}
+
+.ts-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 40px rgba(70, 69, 69, 0.75);
+}
+
+/* Outline */
+.ts-btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.ts-btn-outline:hover {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+/* =======================================================
+   BUTTON-CONTAINER (STACKS)
+   ======================================================= */
+
+/* Startseite */
+.ts-hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+  align-items: center;
+}
+
+.ts-hero-actions .ts-btn {
+  width: 100%;
+  max-width: 280px;
+}
+
+/* Module-Seite – Stations-Buttons */
+.ts-stations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.ts-stations-list .ts-btn {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Links-Seite – externe Links (ÖBB, Ars, ...) */
+.ts-links-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.ts-links-buttons .ts-btn {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Tracking-Seite – die drei Buttons */
+.ts-button-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.ts-button-row .ts-btn {
+  width: 100%;
+  max-width: 260px;
+}
+
+/* =======================================================
+   CARDS
+   ======================================================= */
+
+.ts-card {
+  background: var(--panel-bg);
+  border-radius: var(--radius-lg);
+  padding: 24px 24px 26px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+  border: 1px solid var(--border-soft);
+  margin-bottom: 22px;
+}
+
+.ts-card-soft {
+  background: var(--panel-bg-soft);
+}
+
+.ts-card-wide,
+.ts-card-large {
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.ts-card-title {
+  margin: 0 0 18px;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.ts-muted {
+  color: var(--text-muted);
+}
+
+/* =======================================================
+   LINKS-SEITE – SEITEN LISTE
+   ======================================================= */
+
+.ts-links-pages {
+  margin-top: 24px;
+}
+
+.ts-links-pages ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ts-links-pages li + li {
+  margin-top: 8px;
+}
+
+.ts-links-pages a {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.ts-links-pages a:link,
+.ts-links-pages a:visited {
+  color: var(--text-muted);
+}
+
+.ts-links-pages a:hover {
+  color: var(--text-main);
+  background: rgba(248, 113, 165, 0.18);
+  border-color: rgba(148, 148, 148, 0.7);
+  box-shadow: 0 10px 22px rgba(177, 175, 176, 0.35);
+  transform: translateY(-1px);
+}
+
+/* aktiver Eintrag falls du class="ts-pill-active" vergibst */
+.ts-links-pages a.ts-pill-active {
+  color: var(--text-main);
+  background: rgba(160, 156, 158, 0.35);
+  border-color: rgba(223, 223, 223, 0.9);
+  box-shadow: 0 14px 26px rgba(187, 187, 187, 0.45);
+}
+
+/* =======================================================
+   LOGIN / REGISTRIEREN
+   ======================================================= */
+
+.ts-card form {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.ts-card h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.ts-card p {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+}
+
+.ts-card input,
+.ts-card select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+  outline: none;
+  min-width: 160px;
+}
+
+.ts-card input::placeholder {
+  color: rgba(39, 39, 39, 0.35);
+}
+
+.ts-card input:focus,
+.ts-card select:focus {
+  border-color: rgba(150, 140, 143, 0.7);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 12px rgba(173, 172, 173, 0.4);
+}
+
+.ts-card select {
+  appearance: none;
+}
+
+.ts-card button,
+.ts-card .ts-btn {
+  padding: 10px 26px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-pink-soft));
+  color: #111;
+  font-weight: 500;
+  box-shadow: 0 16px 32px rgba(201, 201, 201, 0.45);
+  transition: 0.25s ease;
+}
+
+.ts-card button:hover,
+.ts-card .ts-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(73, 73, 73, 0.75);
+}
+
+.ts-form-message {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.ts-form-message.error {
+  color: #f87171;
+}
+
+.ts-form-message.success {
+  color: #4ade80;
+}
+
+/* =======================================================
+   FOOTER
+   ======================================================= */
+
+.ts-footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.ts-footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.ts-footer a:hover {
+  text-decoration: underline;
+}
+
+/* =======================================================
+   RESPONSIVE
+   ======================================================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .ts-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ts-nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .ts-main,
+  .ts-main-centered {
+    padding: 20px 16px 32px;
+  }
+
+  .ts-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .ts-hero-inner::before,
+  .ts-hero-inner::after {
+    display: none;
+  }
+
+  .ts-card,
+  .ts-card-wide,
+  .ts-card-large {
+    margin-inline: 0;
+  }
+
+  /* Profil-Formulare untereinander */
+  .ts-profile-grid {
+    display: block;
+  }
+
+  .ts-profile-grid .ts-card + .ts-card {
+    margin-top: 16px;
+  }
+
+  .ts-card form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ts-card input,
+  .ts-card select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .ts-card form button {
+    align-self: flex-end;
+  }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+  .ts-hero {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .ts-hero-title {
+    font-size: 2rem;
+  }
+
+  .ts-hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .ts-hero-actions .ts-btn {
+    max-width: 260px;
+  }
+
+  .ts-stations-list .ts-btn,
+  .ts-links-buttons .ts-btn,
+  .ts-button-row .ts-btn {
+    max-width: 280px;
+  }
+
+  .ts-links-pages a {
+    width: 100%;
+  }
+
+  .ts-footer {
+    font-size: 0.75rem;
+  }
+}

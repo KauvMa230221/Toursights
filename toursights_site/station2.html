@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>TourSights – Station 2 Quiz & Fakten</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="station2">
+  <header class="ts-header">
+    <div class="ts-logo">
+      <span class="ts-logo-icon">📍</span>
+      <span class="ts-logo-text">TourSights</span>
+    </div>
+    <nav class="ts-nav">
+      <a href="index.html" data-page-link="home">Startseite</a>
+      <a href="modules.html" data-page-link="modules">Module</a>
+      <a href="links.html" data-page-link="links">Links</a>
+      <a href="map.html" data-page-link="map">Map</a>
+      <a href="progress.html" data-page-link="progress">Fortschritt</a>
+      <a href="profile.html" data-page-link="profile">Profil</a>
+    </nav>
+  </header>
+
+  <main class="ts-main">
+    <section class="ts-card ts-card-wide ts-animate-up">
+      <h1>Toursights – Station 2 Quiz & Fakten</h1>
+      <p>Teste dein Wissen über die Ausstellungen!</p>
+    </section>
+
+    <section class="ts-card ts-card-wide ts-animate-up" id="station2-quiz">
+      <div id="station2-question-view">
+        <h2 id="station2-question-title">Frage 1 / 9</h2>
+        <p id="station2-question-text">Fragetext…</p>
+        <input type="text" id="station2-answer" placeholder="Antwort hier..." />
+        <div class="ts-button-row">
+          <button id="station2-next" class="ts-btn ts-btn-primary">Weiter</button>
+          <button id="station2-skip" class="ts-btn ts-btn-outline">Weiß ich nicht</button>
+        </div>
+        <p id="station2-feedback" class="ts-form-message"></p>
+      </div>
+
+      <div id="station2-result-view" class="ts-hidden">
+        <h2>Ergebnis</h2>
+        <p>Punkte: <span id="station2-score">0</span> / 9</p>
+        <ul id="station2-result-list" class="ts-result-list"></ul>
+        <button id="station2-restart" class="ts-btn ts-btn-primary">Nochmal starten</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ts-footer">
+    <p>© 2025 TourSights · Station 2 Quiz</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

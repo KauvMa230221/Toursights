@@ -1,1 +1,0 @@
-Projekt Toursights: Eine App, damit Jugendliche ab der 10. Schulstufe, die technischen Sehenswürdigkeiten von Linz erkunden können.

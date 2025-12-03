@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>TourSights – Reise & GPS Tracking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="map">
+  <header class="ts-header">
+    <div class="ts-logo">
+      <span class="ts-logo-icon">📍</span>
+      <span class="ts-logo-text">TourSights</span>
+    </div>
+    <nav class="ts-nav">
+      <a href="index.html" data-page-link="home">Startseite</a>
+      <a href="modules.html" data-page-link="modules">Module</a>
+      <a href="links.html" data-page-link="links">Links</a>
+      <a href="map.html" data-page-link="map" class="active">Map</a>
+      <a href="progress.html" data-page-link="progress">Fortschritt</a>
+      <a href="profile.html" data-page-link="profile">Profil</a>
+    </nav>
+  </header>
+
+  <main class="ts-main">
+    <section class="ts-section">
+      <h1>Reise – GPS Tracking</h1>
+      <p>Hier wird deine Strecke live in Kilometern gezählt.</p>
+    </section>
+
+    <section class="ts-card ts-card-wide ts-animate-left" id="tracking-card">
+      <p>
+        Zurückgelegte Kilometer:
+        <strong><span id="distance-value">0.00</span> km</strong>
+      </p>
+      <div class="ts-button-row">
+        <button id="btn-start-tracking" class="ts-btn ts-btn-primary">Tracking starten</button>
+        <button id="btn-stop-tracking" class="ts-btn ts-btn-outline">Tracking stoppen</button>
+        <button id="btn-save-tracking" class="ts-btn ts-btn-primary">Reise speichern und stoppen</button>
+      </div>
+      <p class="ts-muted ts-small">
+        Hinweis: Das Tracking ist eine Simulation für das Schulprojekt und nutzt keinen echten Standort.
+      </p>
+    </section>
+  </main>
+
+  <footer class="ts-footer">
+    <p>© 2025 TourSights</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
