@@ -72,15 +72,16 @@ function saveJSON(key, value) {
 (function setupProgress() {
   const station1El = document.getElementById("station1-points");
   const station2El = document.getElementById("station2-points");
+  const station3El = document.getElementById("station3-points");
   const totalKmEl = document.getElementById("total-kilometers");
 
-  if (!station1El || !station2El || !totalKmEl) return;
+  if (!station1El || !station2El || !station3El || !totalKmEl) return;
 
   let s1 = loadJSON(STORAGE_KEYS.station1Points, 0);
   let s2 = loadJSON(STORAGE_KEYS.station2Points, 0);
+  let s3 = loadJSON(STORAGE_KEYS.station3Points, 0);
   let km = loadJSON(STORAGE_KEYS.distance, 0);
 
-  // Simple count-up animation
   function animateValue(el, value, decimals = 0, duration = 600) {
     const start = 0;
     const startTime = performance.now();
@@ -89,17 +90,17 @@ function saveJSON(key, value) {
       const progress = Math.min(1, (now - startTime) / duration);
       const current = start + (value - start) * progress;
       el.textContent = decimals ? current.toFixed(decimals) : Math.round(current);
-      if (progress < 1) {
-        requestAnimationFrame(frame);
-      }
+      if (progress < 1) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
 
-  animateValue(station1El, s1, 0);
-  animateValue(station2El, s2, 0);
+  animateValue(station1El, s1);
+  animateValue(station2El, s2);
+  animateValue(station3El, s3);
   animateValue(totalKmEl, km, 2);
 })();
+
 
 // === Profile / Login Logic ===
 (function setupProfile() {
@@ -353,6 +354,79 @@ function saveJSON(key, value) {
       link.classList.add("active");
     }
   });
+})();
+
+// === Station 3 Multiple-Choice Quiz Logic ===
+// === Station 3 Multiple-Choice Quiz Logic ===
+(function setupStation3() {
+  const form = document.getElementById("station3-form");
+  if (!form) return;
+
+  const scoreMessage = document.getElementById("station3-score-message");
+
+  const feedbackEls = {};
+  for (let i = 1; i <= 8; i++) {
+    feedbackEls["q" + i] = document.querySelector(`[data-feedback-for="q${i}"]`);
+  }
+
+  const solutions = {
+    q1: "b",
+    q2: "c",
+    q3: "b",
+    q4: "b",
+    q5: "c",
+    q6: "a",
+    q7: "a",
+    q8: "a",
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let score = 0;
+
+    Object.keys(solutions).forEach((key) => {
+      const correct = solutions[key];
+      const feedback = feedbackEls[key];
+      const selected = form.querySelector(`input[name="${key}"]:checked`);
+
+      if (!selected) {
+        feedback.textContent = "Keine Antwort gewählt.";
+        feedback.style.color = "var(--danger)";
+        return;
+      }
+
+      if (selected.value === correct) {
+        feedback.textContent = "Richtig ✓";
+        feedback.style.color = "var(--success)";
+        score++;
+      } else {
+        feedback.textContent = "Falsch ✗";
+        feedback.style.color = "var(--danger)";
+      }
+    });
+
+    saveJSON(STORAGE_KEYS.station3Points, score);
+
+    scoreMessage.textContent = `Du hast ${score} von 8 Punkten erreicht.`;
+    scoreMessage.className = "ts-form-message success";
+  });
+})();
+
+(function(){
+const f=document.getElementById("station3-form");if(!f)return;
+const msg=document.getElementById("station3-score-message");
+const sol={q1:"b",q2:"c",q3:"b",q4:"b",q5:"c",q6:"a",q7:"a",q8:"a"};
+f.onsubmit=e=>{
+ e.preventDefault();let s=0;
+ Object.keys(sol).forEach(k=>{
+  const sel=f.querySelector(`input[name=${k}]:checked`);
+  const fb=document.querySelector(`[data-feedback-for=${k}]`);
+  if(!sel){fb.textContent="Keine Antwort";return;}
+  if(sel.value===sol[k]){fb.textContent="✓";s++;}else fb.textContent="✗";
+ });
+ localStorage.setItem("ts_station3_points",s);
+ msg.textContent=`${s}/8 Punkten erreicht`;
+};
 })();
 
 
