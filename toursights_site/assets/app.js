@@ -74,6 +74,9 @@ function saveJSON(key, value) {
   const station2El = document.getElementById("station2-points");
   const station3El = document.getElementById("station3-points");
   const totalKmEl = document.getElementById("total-kilometers");
+  const station4El = document.getElementById("station4-points");
+let s4 = loadJSON("ts_station4_points", 0);
+animateValue(station4El, s4);
 
   if (!station1El || !station2El || !station3El || !totalKmEl) return;
 
@@ -98,6 +101,44 @@ function saveJSON(key, value) {
   animateValue(station1El, s1);
   animateValue(station2El, s2);
   animateValue(station3El, s3);
+  animateValue(totalKmEl, km, 2);
+})();// === Progress Page Logic ===
+(function setupProgress() {
+  const station1El = document.getElementById("station1-points");
+  const station2El = document.getElementById("station2-points");
+  const station3El = document.getElementById("station3-points");
+  const station4El = document.getElementById("station4-points");
+  const totalKmEl = document.getElementById("total-kilometers");
+
+  if (!station1El || !station2El || !station3El || !totalKmEl) return;
+
+  let s1 = loadJSON(STORAGE_KEYS.station1Points, 0);
+  let s2 = loadJSON(STORAGE_KEYS.station2Points, 0);
+  let s3 = loadJSON(STORAGE_KEYS.station3Points, 0);
+  let s4 = loadJSON("ts_station4_points", 0);
+  let km = loadJSON(STORAGE_KEYS.distance, 0);
+
+  function animateValue(el, value, decimals = 0, duration = 600) {
+    if (!el) return;
+    const start = 0;
+    const startTime = performance.now();
+
+    function frame(now) {
+      const progress = Math.min(1, (now - startTime) / duration);
+      const current = start + (value - start) * progress;
+      el.textContent = decimals
+        ? current.toFixed(decimals)
+        : Math.round(current);
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  animateValue(station1El, s1);
+  animateValue(station2El, s2);
+  animateValue(station3El, s3);
+  animateValue(station4El, s4);
   animateValue(totalKmEl, km, 2);
 })();
 
@@ -189,53 +230,40 @@ function saveJSON(key, value) {
 })();
 
 // === Station 1 Quiz Logic ===
+// === Station 1 Multiple-Choice Quiz Logic ===
 (function setupStation1() {
   const form = document.getElementById("station1-form");
   if (!form) return;
 
-  const feedbackEls = {
-    "answer-1": document.querySelector('[data-feedback-for="answer-1"]'),
-    "answer-2": document.querySelector('[data-feedback-for="answer-2"]'),
-    "answer-3": document.querySelector('[data-feedback-for="answer-3"]'),
-  };
   const scoreMessage = document.getElementById("station1-score-message");
 
-  // Intern gespeicherte Lösungen – werden nicht angezeigt
   const solutions = {
-    "answer-1": "künstliche intelligenz", // Platzhalter – Logik egal
-    "answer-2": "universität",            // Platzhalter
-    "answer-3": "keins",                  // Platzhalter
+    q1: "b",
+    q2: "b",
+    q3: "c",
   };
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let score = 0;
 
-    Object.keys(feedbackEls).forEach((name) => {
-      const input = form.elements[name];
-      const feedback = feedbackEls[name];
-      if (!input || !feedback) return;
+    Object.keys(solutions).forEach((q) => {
+      const fb = document.querySelector(`[data-feedback-for="${q}"]`);
+      const sel = form.querySelector(`input[name="${q}"]:checked`);
 
-      const userValue = String(input.value || "").trim().toLowerCase();
-      const correctValue = solutions[name];
-
-      if (!userValue) {
-        feedback.textContent = "Keine Antwort eingegeben.";
-        feedback.style.color = "var(--danger)";
-        input.classList.add("ts-shake");
-        setTimeout(() => input.classList.remove("ts-shake"), 350);
+      if (!sel) {
+        fb.textContent = "Keine Antwort gewählt.";
+        fb.style.color = "var(--danger)";
         return;
       }
 
-      if (userValue === correctValue) {
-        feedback.textContent = "Richtig ✓";
-        feedback.style.color = "var(--success)";
-        score += 1;
+      if (sel.value === solutions[q]) {
+        fb.textContent = "Richtig ✓";
+        fb.style.color = "var(--success)";
+        score++;
       } else {
-        feedback.textContent = "Falsch ✗";
-        feedback.style.color = "var(--danger)";
-        input.classList.add("ts-shake");
-        setTimeout(() => input.classList.remove("ts-shake"), 350);
+        fb.textContent = "Falsch ✗";
+        fb.style.color = "var(--danger)";
       }
     });
 
@@ -245,105 +273,57 @@ function saveJSON(key, value) {
   });
 })();
 
+
 // === Station 2 Quiz Logic ===
+// === Station 2 Multiple-Choice Quiz Logic ===
 (function setupStation2() {
-  const questionView = document.getElementById("station2-question-view");
-  const resultView = document.getElementById("station2-result-view");
-  if (!questionView || !resultView) return;
+  const form = document.getElementById("station2-form");
+  if (!form) return;
 
-  const titleEl = document.getElementById("station2-question-title");
-  const textEl = document.getElementById("station2-question-text");
-  const answerInput = document.getElementById("station2-answer");
-  const nextBtn = document.getElementById("station2-next");
-  const skipBtn = document.getElementById("station2-skip");
-  const feedbackEl = document.getElementById("station2-feedback");
+  const scoreMessage = document.getElementById("station2-score-message");
 
-  const scoreEl = document.getElementById("station2-score");
-  const resultList = document.getElementById("station2-result-list");
-  const restartBtn = document.getElementById("station2-restart");
+  const solutions = {
+    q1: "a",
+    q2: "c",
+    q3: "b",
+    q4: "a",
+    q5: "c",
+    q6: "a",
+    q7: "b",
+    q8: "b",
+    q9: "b",
+  };
 
-  const questions = [
-    { text: "Wo befindet sich die mechanische Klangfabrik?", answer: "haslach" },
-    { text: "Aus welchem Sprachraum stammt der Name der Station?", answer: "englisch" },
-    { text: "Welches Medium wird bei der KI-Musikvisualisierung genutzt?", answer: "musik" },
-    { text: "Wie heißt die Kombination aus künstlicher Intelligenz und Musik?", answer: "ai x music" },
-    { text: "Welche historische Technik steht bei der Walzenmusik im Fokus?", answer: "walzenklavier" },
-    { text: "Wie lautet die Abkürzung des Exo Auxiliary Respiratory Unit Projekts?", answer: "ex.a.r.u." },
-    { text: "Wie heißt das Projekt zu Verschwörungstheorien im virtuellen Raum?", answer: "degenet" },
-    { text: "Welches Projekt beschäftigt sich mit Farb- und Lichtübergängen?", answer: "fadingcolours" },
-    { text: "Welches Beispiel verbindet Space, Education und Science?", answer: "space education science" },
-  ];
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let score = 0;
 
-  let currentIndex = 0;
-  let results = [];
+    Object.keys(solutions).forEach((q) => {
+      const fb = document.querySelector(`[data-feedback-for="${q}"]`);
+      const sel = form.querySelector(`input[name="${q}"]:checked`);
 
-  function showQuestion(index) {
-    const q = questions[index];
-    titleEl.textContent = `Frage ${index + 1} / ${questions.length}`;
-    textEl.textContent = q.text;
-    answerInput.value = "";
-    feedbackEl.textContent = "";
-    questionView.classList.add("ts-animate-up");
-    setTimeout(() => questionView.classList.remove("ts-animate-up"), 400);
-  }
-
-  function finishQuiz() {
-    const score = results.filter((r) => r.correct).length;
-    scoreEl.textContent = String(score);
-    saveJSON(STORAGE_KEYS.station2Points, score);
-
-    resultList.innerHTML = "";
-    results.forEach((r, i) => {
-      const li = document.createElement("li");
-      li.textContent = `F${i + 1}: ${r.correct ? "Richtig" : "Falsch"}`;
-      li.style.color = r.correct ? "var(--success)" : "var(--danger)";
-      resultList.appendChild(li);
-    });
-
-    questionView.classList.add("ts-hidden");
-    resultView.classList.remove("ts-hidden");
-  }
-
-  function handleAnswer(skip = false) {
-    const userValue = String(answerInput.value || "").trim().toLowerCase();
-    const correctValue = questions[currentIndex].answer;
-    let correct = false;
-
-    if (!skip) {
-      if (!userValue) {
-        feedbackEl.textContent = "Bitte gib eine Antwort ein oder klicke auf 'Weiß ich nicht'.";
-        feedbackEl.classList.add("error");
-        answerInput.classList.add("ts-shake");
-        setTimeout(() => answerInput.classList.remove("ts-shake"), 350);
+      if (!sel) {
+        fb.textContent = "Keine Antwort gewählt.";
+        fb.style.color = "var(--danger)";
         return;
       }
-      correct = userValue === correctValue;
-    }
 
-    results[currentIndex] = { correct };
-    currentIndex += 1;
+      if (sel.value === solutions[q]) {
+        fb.textContent = "Richtig ✓";
+        fb.style.color = "var(--success)";
+        score++;
+      } else {
+        fb.textContent = "Falsch ✗";
+        fb.style.color = "var(--danger)";
+      }
+    });
 
-    if (currentIndex < questions.length) {
-      showQuestion(currentIndex);
-    } else {
-      finishQuiz();
-    }
-  }
-
-  nextBtn.addEventListener("click", () => handleAnswer(false));
-  skipBtn.addEventListener("click", () => handleAnswer(true));
-
-  restartBtn.addEventListener("click", () => {
-    currentIndex = 0;
-    results = [];
-    resultView.classList.add("ts-hidden");
-    questionView.classList.remove("ts-hidden");
-    showQuestion(0);
+    saveJSON(STORAGE_KEYS.station2Points, score);
+    scoreMessage.textContent = `Du hast ${score} von 9 Punkten erreicht.`;
+    scoreMessage.className = "ts-form-message success";
   });
-
-  // Initial question
-  showQuestion(currentIndex);
 })();
+
 
 // === Navigation Helper (optional active state if needed) ===
 (function highlightNav() {
@@ -429,4 +409,144 @@ f.onsubmit=e=>{
 };
 })();
 
+// === Station 4 Multiple-Choice Quiz Logic ===
+(function setupStation4() {
+  const form = document.getElementById("station4-form");
+  if (!form) return;
 
+  const scoreMessage = document.getElementById("station4-score-message");
+
+  const solutions = {
+    q1: "a",
+    q2: "b",
+    q3: "a",
+    q4: "b",
+    q5: "a",
+    q6: "b",
+    q7: "a",
+    q8: "a",
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let score = 0;
+
+    Object.keys(solutions).forEach((q) => {
+      const fb = document.querySelector(`[data-feedback-for="${q}"]`);
+      const sel = form.querySelector(`input[name="${q}"]:checked`);
+
+      if (!sel) {
+        fb.textContent = "Keine Antwort gewählt.";
+        fb.style.color = "var(--danger)";
+        return;
+      }
+
+      if (sel.value === solutions[q]) {
+        fb.textContent = "Richtig ✓";
+        fb.style.color = "var(--success)";
+        score++;
+      } else {
+        fb.textContent = "Falsch ✗";
+        fb.style.color = "var(--danger)";
+      }
+    });
+
+    saveJSON("ts_station4_points", score);
+    scoreMessage.textContent = `Du hast ${score} von 8 Punkten erreicht.`;
+    scoreMessage.className = "ts-form-message success";
+  });
+})();
+
+// === MAP + GPS TRACKING (ECHT) ===
+(function setupMapAndGPS() {
+  const mapEl = document.getElementById("map-view");
+  const distanceEl = document.getElementById("distance-value");
+  const btnStart = document.getElementById("btn-start-tracking");
+  const btnStop = document.getElementById("btn-stop-tracking");
+
+  if (!mapEl || !distanceEl || !btnStart || !btnStop) return;
+
+  let map, watchId = null;
+  let lastPos = null;
+  let distance = loadJSON(STORAGE_KEYS.distance, 0);
+
+  // Stationen (Beispiel-Koordinaten – kannst du anpassen)
+  const stations = [
+    { name: "Station 1 – Digital Studio", lat: 48.3069, lng: 14.2858 },
+    { name: "Station 2 – Ars Electronica", lat: 48.3071, lng: 14.2849 },
+    { name: "Station 3 – Arbeiterkammer", lat: 48.3009, lng: 14.2841 },
+    { name: "Station 4 – Wirtschaftskammer", lat: 48.3052, lng: 14.2865 },
+  ];
+
+  // Karte starten
+  map = L.map("map-view").setView([48.3069, 14.2858], 15);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap"
+  }).addTo(map);
+
+  // Stationen anzeigen
+  stations.forEach(s => {
+    L.marker([s.lat, s.lng])
+      .addTo(map)
+      .bindPopup(`<strong>${s.name}</strong>`);
+  });
+
+  function updateDistanceDisplay() {
+    distanceEl.textContent = distance.toFixed(2);
+  }
+
+  function calcDistance(a, b) {
+    const R = 6371;
+    const dLat = (b.lat - a.lat) * Math.PI / 180;
+    const dLng = (b.lng - a.lng) * Math.PI / 180;
+    const lat1 = a.lat * Math.PI / 180;
+    const lat2 = b.lat * Math.PI / 180;
+
+    const x =
+      Math.sin(dLat / 2) ** 2 +
+      Math.sin(dLng / 2) ** 2 * Math.cos(lat1) * Math.cos(lat2);
+
+    return 2 * R * Math.asin(Math.sqrt(x));
+  }
+
+  btnStart.addEventListener("click", () => {
+    if (!navigator.geolocation) {
+      alert("GPS wird von deinem Browser nicht unterstützt.");
+      return;
+    }
+
+    watchId = navigator.geolocation.watchPosition(
+      pos => {
+        const current = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude
+        };
+
+        if (lastPos) {
+          distance += calcDistance(lastPos, current);
+          updateDistanceDisplay();
+        }
+
+        lastPos = current;
+        map.setView([current.lat, current.lng], 16);
+        L.circleMarker([current.lat, current.lng], {
+          radius: 6,
+          color: "#f472b6"
+        }).addTo(map);
+      },
+      err => alert("Standort konnte nicht abgerufen werden."),
+      { enableHighAccuracy: true }
+    );
+  });
+
+  btnStop.addEventListener("click", () => {
+    if (watchId !== null) {
+      navigator.geolocation.clearWatch(watchId);
+      watchId = null;
+      saveJSON(STORAGE_KEYS.distance, distance);
+      alert("Reise gestoppt und gespeichert!");
+    }
+  });
+
+  updateDistanceDisplay();
+})();

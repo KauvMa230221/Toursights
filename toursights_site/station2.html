@@ -26,27 +26,108 @@
     <section class="ts-card ts-card-wide ts-animate-up">
       <h1>Toursights – Station 2 Quiz & Fakten</h1>
       <p>Teste dein Wissen über die Ausstellungen!</p>
+    </section>´
+
+    <section class="ts-card ts-card-wide ts-animate-up">
+      <h2>Video</h2>
+      <video controls class="ts-video">
+        <source src="" type="video/mp4" />
+        Dein Browser unterstützt das Video-Tag nicht.
+      </video>
     </section>
 
     <section class="ts-card ts-card-wide ts-animate-up" id="station2-quiz">
-      <div id="station2-question-view">
-        <h2 id="station2-question-title">Frage 1 / 9</h2>
-        <p id="station2-question-text">Fragetext…</p>
-        <input type="text" id="station2-answer" placeholder="Antwort hier..." />
-        <div class="ts-button-row">
-          <button id="station2-next" class="ts-btn ts-btn-primary">Weiter</button>
-          <button id="station2-skip" class="ts-btn ts-btn-outline">Weiß ich nicht</button>
-        </div>
-        <p id="station2-feedback" class="ts-form-message"></p>
-      </div>
+  <h2>Fragen</h2>
 
-      <div id="station2-result-view" class="ts-hidden">
-        <h2>Ergebnis</h2>
-        <p>Punkte: <span id="station2-score">0</span> / 9</p>
-        <ul id="station2-result-list" class="ts-result-list"></ul>
-        <button id="station2-restart" class="ts-btn ts-btn-primary">Nochmal starten</button>
-      </div>
-    </section>
+  <form id="station2-form">
+
+    <!-- Frage 1 -->
+    <div class="ts-question">
+      <p>1. Wo befindet sich die mechanische Klangfabrik?</p>
+      <label><input type="radio" name="q1" value="a"> Haslach</label>
+      <label><input type="radio" name="q1" value="b"> Wien</label>
+      <label><input type="radio" name="q1" value="c"> Linz</label>
+      <p class="ts-feedback" data-feedback-for="q1"></p>
+    </div>
+
+    <!-- Frage 2 -->
+    <div class="ts-question">
+      <p>2. Aus welchem Sprachraum stammt der Name der Station?</p>
+      <label><input type="radio" name="q2" value="a"> Deutsch</label>
+      <label><input type="radio" name="q2" value="b"> Französisch</label>
+      <label><input type="radio" name="q2" value="c"> Englisch</label>
+      <p class="ts-feedback" data-feedback-for="q2"></p>
+    </div>
+
+    <!-- Frage 3 -->
+    <div class="ts-question">
+      <p>3. Welches Medium wird bei der KI-Musikvisualisierung genutzt?</p>
+      <label><input type="radio" name="q3" value="a"> Text</label>
+      <label><input type="radio" name="q3" value="b"> Musik</label>
+      <label><input type="radio" name="q3" value="c"> Fotos</label>
+      <p class="ts-feedback" data-feedback-for="q3"></p>
+    </div>
+
+    <!-- Frage 4 -->
+    <div class="ts-question">
+      <p>4. Wie heißt die Kombination aus künstlicher Intelligenz und Musik?</p>
+      <label><input type="radio" name="q4" value="a"> AI x Music</label>
+      <label><input type="radio" name="q4" value="b"> SoundLab</label>
+      <label><input type="radio" name="q4" value="c"> Digital Beats</label>
+      <p class="ts-feedback" data-feedback-for="q4"></p>
+    </div>
+
+    <!-- Frage 5 -->
+    <div class="ts-question">
+      <p>5. Welche historische Technik steht bei der Walzenmusik im Fokus?</p>
+      <label><input type="radio" name="q5" value="a"> Schallplatte</label>
+      <label><input type="radio" name="q5" value="b"> Kassette</label>
+      <label><input type="radio" name="q5" value="c"> Walzenklavier</label>
+      <p class="ts-feedback" data-feedback-for="q5"></p>
+    </div>
+
+    <!-- Frage 6 -->
+    <div class="ts-question">
+      <p>6. Wie lautet die Abkürzung des Exo Auxiliary Respiratory Unit Projekts?</p>
+      <label><input type="radio" name="q6" value="a"> E.A.R.U.</label>
+      <label><input type="radio" name="q6" value="b"> E.X.O.</label>
+      <label><input type="radio" name="q6" value="c"> A.R.U.</label>
+      <p class="ts-feedback" data-feedback-for="q6"></p>
+    </div>
+
+    <!-- Frage 7 -->
+    <div class="ts-question">
+      <p>7. Wie heißt das Projekt zu Verschwörungstheorien im virtuellen Raum?</p>
+      <label><input type="radio" name="q7" value="a"> FadingColours</label>
+      <label><input type="radio" name="q7" value="b"> Degenet</label>
+      <label><input type="radio" name="q7" value="c"> SpaceLab</label>
+      <p class="ts-feedback" data-feedback-for="q7"></p>
+    </div>
+
+    <!-- Frage 8 -->
+    <div class="ts-question">
+      <p>8. Welches Projekt beschäftigt sich mit Farb- und Lichtübergängen?</p>
+      <label><input type="radio" name="q8" value="a"> Space Education Science</label>
+      <label><input type="radio" name="q8" value="b"> FadingColours</label>
+      <label><input type="radio" name="q8" value="c"> AI Vision</label>
+      <p class="ts-feedback" data-feedback-for="q8"></p>
+    </div>
+
+    <!-- Frage 9 -->
+    <div class="ts-question">
+      <p>9. Welches Beispiel verbindet Space, Education und Science?</p>
+      <label><input type="radio" name="q9" value="a"> AI x Music</label>
+      <label><input type="radio" name="q9" value="b"> Space Education Science</label>
+      <label><input type="radio" name="q9" value="c"> Digital Network</label>
+      <p class="ts-feedback" data-feedback-for="q9"></p>
+    </div>
+
+    <button type="submit" class="ts-btn ts-btn-primary">Auswerten</button>
+    <p id="station2-score-message" class="ts-form-message"></p>
+
+     <a href="progress.html" class="ts-btn ts-btn-secondary">Fortschritt anzeigen</a>
+  </form>
+</section>
   </main>
 
   <footer class="ts-footer">
