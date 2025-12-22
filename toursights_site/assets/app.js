@@ -550,3 +550,34 @@ f.onsubmit=e=>{
 
   updateDistanceDisplay();
 })();
+
+// REGISTER
+document.getElementById("register-form")?.addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const res = await fetch("register.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: document.getElementById("register-username").value,
+      password: document.getElementById("register-password").value,
+      role: document.getElementById("register-role").value,
+      class: document.getElementById("register-class").value
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("register-message").textContent =
+    data.success ? "Registriert!" : "Fehler";
+});
+
+
+// Eingeloggenen User anzeigen
+fetch("current_user.php")
+  .then(res => res.json())
+  .then(user => {
+    if (user) {
+      document.getElementById("current-user-info").textContent =
+        `Eingeloggt als ${user.username} (${user.role}${user.class ? ", " + user.class : ""})`;
+    }
+  });
