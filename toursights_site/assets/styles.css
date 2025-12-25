@@ -59,6 +59,7 @@ body {
   justify-content: space-between;
 }
 
+/* LOGO */
 .ts-logo {
   display: flex;
   align-items: center;
@@ -82,11 +83,15 @@ body {
   letter-spacing: 0.04em;
 }
 
+/* NAVIGATION – DESKTOP */
 .ts-nav {
   display: flex;
+  flex-direction: row;   /* ✅ nebeneinander */
   gap: 18px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  align-items: center;
 }
+
 
 .ts-nav a {
   text-decoration: none;
@@ -915,32 +920,122 @@ body {
     min-height: 52px;
     box-sizing: border-box;
   }
+
+  /* NAVIGATION – HANDY */
+  .ts-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* =======================================================
+   HANDY – NAVIGATION
+   ======================================================= */
+@media (max-width: 600px) {
+  .ts-nav {
+    flex-direction: column;   /* 👈 UNTEREINANDER */
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
 
 
-/* =======================================================
-   HANDY – PERFEKT RESPONSIVE
-   ======================================================= */
+/* ===== Profil / Login ===== */
+.ts-form-message {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.ts-form-message.error {
+  color: #ef4444; /* rot */
+}
+
+.ts-form-message.success {
+  color: #22c55e; /* grün */
+}
+
+.ts-profile-box {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(23, 23, 23, 0.85);
+  border: 1px solid #e5e7eb;
+}
+
+.ts-hidden {
+  display: none !important;
+}
+
+/* kleines Shake bei falschem Login */
+.ts-shake {
+  animation: ts-shake 0.4s;
+}
+@keyframes ts-shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+
+/* ===============================
+   PROFIL – SAUBER ZENTRIERT
+   =============================== */
+
+.ts-profile-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.ts-profile-grid .ts-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Login-Card (die unter main liegt) auch zentrieren */
+body[data-page="profile"] > .ts-card {
+  max-width: 420px;
+  margin: 0 auto 40px;
+}
+
+/* Profil-Text oben */
+#current-user-info {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+/* ===============================
+   NÜTZLICHE LINKS – RESPONSIVE
+   =============================== */
+
+/* Desktop: nebeneinander */
+.ts-links-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* Buttons */
+.ts-links-buttons .ts-btn {
+  min-width: 220px;
+  text-align: center;
+}
+
+/* Handy: untereinander */
 @media (max-width: 600px) {
-
-  html, body {
-    overflow-x: hidden;
+  .ts-links-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .ts-question {
-    padding: 20px 12px;
-    margin-bottom: 26px;
-  }
-
-  .ts-question > p {
-    font-size: 1rem;
-  }
-
-  .ts-question label {
-    max-width: 100%;
-    padding: 14px;
-    font-size: 0.92rem;
-    min-height: 52px;
-    box-sizing: border-box;
+  .ts-links-buttons .ts-btn {
+    width: 100%;
+    max-width: 320px;
   }
 }

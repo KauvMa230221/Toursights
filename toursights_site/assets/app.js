@@ -164,8 +164,10 @@ animateValue(station4El, s4);
   function updateCurrentUserInfo() {
     const current = loadJSON(STORAGE_KEYS.currentUser, null);
     if (!currentUserInfo) return;
+
     if (current) {
-      currentUserInfo.textContent = `Eingeloggt als ${current.username} (${current.role}, ${current.class || "keine Klasse"})`;
+      currentUserInfo.textContent =
+        `Sie sind als ${current.username} (${current.role}${current.class ? ", " + current.class : ""}) angemeldet`;
     } else {
       currentUserInfo.textContent = "Du bist derzeit nicht eingeloggt.";
     }
@@ -173,6 +175,7 @@ animateValue(station4El, s4);
 
   updateCurrentUserInfo();
 
+  // REGISTRIEREN
   registerForm.addEventListener("submit", (e) => {
     e.preventDefault();
     registerMessage.textContent = "";
@@ -198,11 +201,13 @@ animateValue(station4El, s4);
 
     users.push({ username, password, role, class: klass });
     setUsers(users);
+
     registerMessage.textContent = "Registrierung erfolgreich! Du kannst dich jetzt einloggen.";
     registerMessage.classList.add("success");
     registerForm.reset();
   });
 
+  // LOGIN
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
     loginMessage.textContent = "";
@@ -212,7 +217,9 @@ animateValue(station4El, s4);
     const password = document.getElementById("login-password").value;
 
     const users = getUsers();
-    const found = users.find((u) => u.username === username && u.password === password);
+    const found = users.find(
+      (u) => u.username === username && u.password === password
+    );
 
     if (!found) {
       loginMessage.textContent = "Benutzername oder Passwort ist falsch.";
@@ -222,7 +229,12 @@ animateValue(station4El, s4);
       return;
     }
 
-    saveJSON(STORAGE_KEYS.currentUser, { username: found.username, role: found.role, class: found.class });
+    saveJSON(STORAGE_KEYS.currentUser, {
+      username: found.username,
+      role: found.role,
+      class: found.class
+    });
+
     loginMessage.textContent = "Login erfolgreich!";
     loginMessage.classList.add("success");
     updateCurrentUserInfo();
@@ -551,33 +563,31 @@ f.onsubmit=e=>{
   updateDistanceDisplay();
 })();
 
-// REGISTER
-document.getElementById("register-form")?.addEventListener("submit", async e => {
+document.getElementById("register-form")?.addEventListener("submit", e => {
   e.preventDefault();
 
-  const res = await fetch("register.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: document.getElementById("register-username").value,
-      password: document.getElementById("register-password").value,
-      role: document.getElementById("register-role").value,
-      class: document.getElementById("register-class").value
-    })
-  });
+  const username = document.getElementById("register-username").value.trim();
+  const role = document.getElementById("register-role").value;
+  const klass = document.getElementById("register-class").value.trim();
+  const info = document.getElementById("current-user-info");
 
-  const data = await res.json();
-  document.getElementById("register-message").textContent =
-    data.success ? "Registriert!" : "Fehler";
+  if (!username) {
+    alert("Bitte Benutzername eingeben");
+    return;
+  }
+
+  // User als aktuell eingeloggt setzen
+  localStorage.setItem(
+    "ts_current_user",
+    JSON.stringify({ username, role, class: klass })
+  );
+
+  // Anzeige aktualisieren
+  info.innerHTML = `
+    <strong>${username}</strong><br>
+    <span class="ts-muted">
+      ${role}${klass ? " · " + klass : ""}
+    </span>
+  `;
 });
 
-
-// Eingeloggenen User anzeigen
-fetch("current_user.php")
-  .then(res => res.json())
-  .then(user => {
-    if (user) {
-      document.getElementById("current-user-info").textContent =
-        `Eingeloggt als ${user.username} (${user.role}${user.class ? ", " + user.class : ""})`;
-    }
-  });
