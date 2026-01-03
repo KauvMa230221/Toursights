@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>TourSights – Profil & Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="profile">
+  <header class="ts-header">
+    <div class="ts-logo">
+      <span class="ts-logo-icon">📍</span>
+      <span class="ts-logo-text">TourSights</span>
+    </div>
+    <nav class="ts-nav">
+      <a href="index.html" data-page-link="home">Startseite</a>
+      <a href="modules.html" data-page-link="modules">Module</a>
+      <a href="links.html" data-page-link="links">Links</a>
+      <a href="map.html" data-page-link="map">Map</a>
+      <a href="progress.html" data-page-link="progress">Fortschritt</a>
+      <a href="profile.html" data-page-link="profile" class="active">Profil</a>
+    </nav>
+  </header>
+
+  <main class="ts-main">
+    <section class="ts-section">
+      <h1>Profil</h1>
+      <p id="current-user-info" class="ts-muted"></p>
+    </section>
+
+    <section class="ts-profile-grid">
+      <div class="ts-card ts-animate-right">
+        <h2>Registrieren</h2>
+        <form id="register-form">
+          <label>
+            Benutzername
+            <input type="text" id="register-username" required />
+          </label>
+          <label>
+            Passwort
+            <input type="password" id="register-password" required />
+          </label>
+          <label>
+            Rolle
+            <select id="register-role">
+              <option value="Schüler">Schüler</option>
+              <option value="Schule">Schule</option>
+            </select>
+          </label>
+          <label>
+            Klasse
+            <input type="text" id="register-class" placeholder="z.B. 3AHIT" />
+          </label>
+          <button type="submit" class="ts-btn ts-btn-primary">Registrieren</button>
+          <p class="ts-form-message" id="register-message"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div class="ts-card ts-animate-left">
+  <h2>Anmelden</h2>
+  <form id="login-form">
+    <label>
+      Benutzername
+      <input type="text" id="login-username" required />
+    </label>
+    <label>
+      Passwort
+      <input type="password" id="login-password" required />
+    </label>
+    <button type="submit" class="ts-btn ts-btn-primary">Anmelden</button>
+    <p class="ts-form-message" id="login-message"></p>
+  </form>
+</div>
+
+
+  <footer class="ts-footer">
+    <p>© 2025 TourSights</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toursights – Startseite</title>
+</head>
+ 
+<body>
+ 
+<header>
+<ul>
+<li><a class="active" href="index.html">Startseite</a></li>
+<li><a href="stationen.html">Module</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a href="map.html">Map</a></li>
+<li><a href="fortschritt.html">Fortschritt</a></li>
+<li><a href="profil.html">Profil</a></li>
+</ul>
+</header>
+ 
+<main>
+<!-- Hero / Vorstellung -->
+<section class="hero">
+<div class="wrap hero-box">
+<h1>Vorstellung</h1>
+<p class="lead">Willkommen auf unserer Toursights-Webseite.</p>
+ 
+<div class="cta-row">
+<a class="btn" href="stationen.html">Module ansehen</a>
+<a class="btn btn-ghost" href="map.html">Zur Karte</a>
+</div>
+ 
+<!-- NEUE REISE-KNOPFSECTION -->
+<div style="margin-top:40px;">
+<h2>Reise</h2>
+ 
+<button id="reiseStart" class="btn">Reise starten</button>
+<button id="reiseStop" class="btn btn-ghost" disabled>Reise stoppen</button>
+ 
+<p id="reiseInfo" class="muted" style="margin-top:10px;"></p>
+</div>
+</div>
+</section>
+ 
+<!-- Team -->
+<section class="section">
+<div class="wrap grid-2">
+<article class="card"><h2>Andi</h2><p class="muted">Work: Organisation, Code</p></article>
+<article class="card"><h2>Marcel</h2><p class="muted">Work: Design, Code</p></article>
+</div>
+</section>
+</main>
+ 
+<footer class="site-footer">
+<div class="wrap">
+<nav aria-label="Footer">
+<ul>
+<li><a href="index.html">Startseite</a></li>
+<li><a href="stationen.html">Module</a></li>
+<li><a href="links.html">Links</a></li>
+<li><a href="map.html">Map</a></li>
+<li><a href="fortschritt.html">Fortschritt</a></li>
+<li><a href="profil.html">Profil</a></li>
+</ul>
+</nav>
+<p class="muted">© <span id="year"></span> Toursights · HTL Paul-Hahn</p>
+</div>
+</footer>
+ 
+<script>
+// Jahr setzen
+document.getElementById("year").textContent = new Date().getFullYear();
+ 
+// ===============================
+// REISE-STATUS - LOCAL STORAGE
+// ===============================
+function updateButtons() {
+    const aktiv = localStorage.getItem("reiseAktiv") === "true";
+    document.getElementById("reiseStart").disabled = aktiv;
+    document.getElementById("reiseStop").disabled = !aktiv;
+ 
+    if (aktiv) {
+        reiseInfo.textContent = "Reise läuft – du kannst sie jederzeit stoppen.";
+    } else {
+        reiseInfo.textContent = "Keine aktive Reise.";
+    }
+}
+ 
+// Reise starten
+document.getElementById("reiseStart").onclick = () => {
+    localStorage.setItem("reiseAktiv", "true");
+    window.location.href = "map.html"; // Weiter zur Karte
+};
+ 
+// Reise stoppen
+document.getElementById("reiseStop").onclick = () => {
+    localStorage.setItem("reiseAktiv", "false");
+    alert("Reise wurde gestoppt!");
+    updateButtons();
+};
+ 
+// Buttons beim Laden aktualisieren
+updateButtons();
+</script>
+ 
+</body>
+</html>

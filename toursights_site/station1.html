@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>TourSights – Station 1 Digital Studio Labor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="station1">
+  <header class="ts-header">
+    <div class="ts-logo">
+      <span class="ts-logo-icon">📍</span>
+      <span class="ts-logo-text">TourSights</span>
+    </div>
+    <nav class="ts-nav">
+      <a href="index.html" data-page-link="home">Startseite</a>
+      <a href="modules.html" data-page-link="modules">Module</a>
+      <a href="links.html" data-page-link="links">Links</a>
+      <a href="map.html" data-page-link="map">Map</a>
+      <a href="progress.html" data-page-link="progress">Fortschritt</a>
+      <a href="profile.html" data-page-link="profile">Profil</a>
+    </nav>
+  </header>
+
+  <main class="ts-main">
+    <section class="ts-card ts-card-wide ts-animate-up">
+      <h1>Toursights – Station 1 • Digital Studio Labor</h1>
+    </section>
+
+    <section class="ts-card ts-card-wide ts-animate-up">
+      <h2>Video</h2>
+      <video controls class="ts-video">
+        <source src="" type="video/mp4" />
+        Dein Browser unterstützt das Video-Tag nicht.
+      </video>
+    </section>
+
+    <section class="ts-card ts-card-wide ts-animate-up" id="station1-quiz">
+      <h2>Fragen</h2>
+      <form id="station1-form">
+
+  <!-- Frage 1 -->
+  <div class="ts-question">
+    <p>1. Was ist eine Möglichkeit von Artificial Intelligence?</p>
+    <label><input type="radio" name="q1" value="a"> Bilder malen</label>
+    <label><input type="radio" name="q1" value="b"> Daten analysieren und Muster erkennen</label>
+    <label><input type="radio" name="q1" value="c"> Gedanken lesen</label>
+    <p class="ts-feedback" data-feedback-for="q1"></p>
+  </div>
+
+  <!-- Frage 2 -->
+  <div class="ts-question">
+    <p>2. Von welcher Universität wird „Digital Network of Conspiracy“ durchgeführt?</p>
+    <label><input type="radio" name="q2" value="a"> Universität Wien</label>
+    <label><input type="radio" name="q2" value="b">  Universität AUSTRIA</label>
+    <label><input type="radio" name="q2" value="c"> Technische Universität Graz</label>
+    <p class="ts-feedback" data-feedback-for="q2"></p>
+  </div>
+
+  <!-- Frage 3 -->
+  <div class="ts-question">
+    <p>3. Was ist KEIN Signalwort?</p>
+    <label><input type="radio" name="q3" value="a"> angeblich</label>
+    <label><input type="radio" name="q3" value="b"> Experten sagen</label>
+    <label><input type="radio" name="q3" value="c"> Pizza</label>
+    <p class="ts-feedback" data-feedback-for="q3"></p>
+  </div>
+
+  <button type="submit" class="ts-btn ts-btn-primary">Auswerten</button>
+  <p id="station1-score-message" class="ts-form-message"></p>
+     <a href="progress.html" class="ts-btn ts-btn-secondary">Fortschritt anzeigen</a>
+    </form>
+
+    </section>
+  </main>
+
+  <footer class="ts-footer">
+    <p>© 2025 TourSights · Station 1</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

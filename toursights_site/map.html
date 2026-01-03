@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>TourSights – Karte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Projekt Styles -->
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    /* Falls noch nicht vorhanden */
+    #map {
+      width: 100%;
+      height: 70vh;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body data-page="map">
+
+  <!-- HEADER -->
+  <header class="ts-header">
+    <div class="ts-logo">
+      <span class="ts-logo-icon">📍</span>
+      <span class="ts-logo-text">TourSights</span>
+    </div>
+    <nav class="ts-nav">
+      <a href="index.html">Startseite</a>
+      <a href="modules.html">Module</a>
+      <a href="links.html">Links</a>
+      <a href="map.html" class="active">Map</a>
+      <a href="progress.html">Fortschritt</a>
+      <a href="profile.html">Profil</a>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="ts-main">
+    <section class="ts-card ts-animate-up">
+      <h1>📍 Stationen auf der Karte</h1>
+      <p>Hier siehst du alle TourSights-Stationen mit Adresse.</p>
+
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="ts-footer">
+    <p>Copyright © 2025 Young Toursights | All rights reserved</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    /* ===== Stationen ===== */
+    const stations = [
+      {
+        name: "Station 1: Digital Studio Labor",
+        address: "Pfarrgasse 9, 4020 Linz",
+        lat: 48.3057275,
+        lon: 14.2879355,
+        link: "station1.html"
+      },
+      {
+        name: "Station 2: ARS Electronica Center",
+        address: "Ars Electronica Center, Linz",
+        lat: 48.3097431,
+        lon: 14.2843268,
+        link: "station2.html"
+      },
+      {
+        name: "Station 3: Arbeiterkammer Oberösterreich",
+        address: "Rainerstraße 5, 4020 Linz",
+        lat: 48.2937847,
+        lon: 14.2913132,
+        link: "station3.html"
+      },
+      {
+        name: "Station 4: Wirtschaftskammer Oberösterreich",
+        address: "Wirtschaftskammer OÖ, 4020 Linz",
+        lat: 48.3014261,
+        lon: 14.294165,
+        link: "station4.html"
+      }
+    ];
+
+    /* ===== Karte ===== */
+    const map = L.map("map").setView([48.2082, 16.3738], 6);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap"
+    }).addTo(map);
+
+    const bounds = [];
+
+    stations.forEach(station => {
+      const marker = L.marker([station.lat, station.lon]).addTo(map);
+
+      marker.bindPopup(`
+        <strong>${station.name}</strong><br>
+        <span>${station.address}</span><br><br>
+        <a href="${station.link}">➡ Zur Station</a>
+      `);
+
+      bounds.push([station.lat, station.lon]);
+    });
+
+    map.fitBounds(bounds, { padding: [40, 40] });
+  </script>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
