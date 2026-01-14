@@ -4,7 +4,7 @@
   "description": "1. Tranking should be started if i start the route - no Counter - you need access from google maps\r 2. Link Stdui Labor is wrong\r 3. Profil - if a student log in the log-data should be save in a database.\r 4. Modules: No writeQuestions pls use Multiplichoise questions for each Qeuestions",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
