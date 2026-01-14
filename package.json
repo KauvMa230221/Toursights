@@ -1,0 +1,21 @@
+{
+  "name": "toursights",
+  "version": "1.0.0",
+  "description": "1. Tranking should be started if i start the route - no Counter - you need access from google maps\r 2. Link Stdui Labor is wrong\r 3. Profil - if a student log in the log-data should be save in a database.\r 4. Modules: No writeQuestions pls use Multiplichoise questions for each Qeuestions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KauvMa230221/Toursights.git"
+  },
+  "keywords": [],
+  "author": "Marcel <40146720230221@litec.ac.at>",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KauvMa230221/Toursights/issues"
+  },
+  "homepage": "https://github.com/KauvMa230221/Toursights#readme"
+}
